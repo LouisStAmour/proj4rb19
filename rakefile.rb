@@ -5,7 +5,7 @@ require 'rake/rdoctask'
 require 'rake/gempackagetask'
 require 'rake/clean'
 require 'date'
-require 'ftools'
+require 'filetools'
 
 CLOBBER.include('pkg/*', 'proj4rb-doc/**/*', 'lib/*.so', 'lib/*.bundle', 'lib/*.dll', 'ext/*.o', 'ext/*.so', 'ext/*.bundle', 'ext/*.dll', 'ext/Makefile', 'ext/mkmf.log')
 
@@ -22,7 +22,7 @@ end
 # ------- Default Package ----------
 FILES = FileList[
   'rakefile.rb',
-  'README',
+  'README.md',
   'MIT-LICENSE',
   'data/**/*',
   'doc/**/*',
@@ -57,8 +57,8 @@ default_spec = Gem::Specification::new do |s|
     s.test_files = FileList['test/test*.rb']
     
     s.has_rdoc = true
-    s.extra_rdoc_files = ["README"]
-    s.rdoc_options.concat ['--main',  'README']
+    s.extra_rdoc_files = ["README.md"]
+    s.rdoc_options.concat ['--main',  'README.md']
 end
 
 desc "Package the library as a gem"
@@ -115,11 +115,11 @@ Rake::RDocTask.new("rdoc") do |rdoc|
   # Show source inline with line numbers
   rdoc.options << "--inline-source" << "--line-numbers"
   # Make the readme file the start page for the generated html
-  rdoc.options << '--main' << 'README'
+  rdoc.options << '--main' << 'README.md'
   rdoc.rdoc_files.include('doc/*.rdoc',
                           'ext/**/*.c',
                           'lib/**/*.rb',
-                          'README',
+                          'README.md',
                           'MIT-LICENSE')
 end
 
