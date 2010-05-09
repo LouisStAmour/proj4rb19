@@ -22,7 +22,7 @@ end
 # ------- Default Package ----------
 FILES = FileList[
   'rakefile.rb',
-  'README.textile',
+  'README.rdoc',
   'MIT-LICENSE',
   'data/**/*',
   'doc/**/*',
@@ -57,8 +57,8 @@ default_spec = Gem::Specification::new do |s|
     s.test_files = FileList['test/test*.rb']
     
     s.has_rdoc = true
-    s.extra_rdoc_files = ["README.textile"]
-    s.rdoc_options.concat ['--main',  'README.textile']
+    s.extra_rdoc_files = ["README.rdoc"]
+    s.rdoc_options.concat ['--main',  'README.rdoc']
 end
 
 desc "Package the library as a gem"
@@ -115,11 +115,11 @@ Rake::RDocTask.new("rdoc") do |rdoc|
   # Show source inline with line numbers
   rdoc.options << "--inline-source" << "--line-numbers"
   # Make the readme file the start page for the generated html
-  rdoc.options << '--main' << 'README.textile'
+  rdoc.options << '--main' << 'README.rdoc'
   rdoc.rdoc_files.include('doc/*.rdoc',
                           'ext/**/*.c',
                           'lib/**/*.rb',
-                          'README.textile',
+                          'README.rdoc',
                           'MIT-LICENSE')
 end
 
